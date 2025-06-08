@@ -8,5 +8,8 @@ jobs:
     steps:
       - name: Print variable
         run: echo "${{ secrets.NAME_SECRECT }}"
-    
 
+      - name: setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
