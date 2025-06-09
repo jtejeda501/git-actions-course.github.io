@@ -24,6 +24,7 @@ jobs:
 
       - name: Run test
         run: npm test
+
   deploy:
     if: ${{ always() }}
     runs-on: ubuntu-latest
@@ -31,4 +32,4 @@ jobs:
 
     steps:
       - name: checkout
-        runs: echo "checkout"
+        run: echo "checkout"
