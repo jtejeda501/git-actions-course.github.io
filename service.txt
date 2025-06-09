@@ -1,0 +1,28 @@
+name: Deploy
+
+on: push
+
+jobs:
+  firts_job:
+    runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+          
+    steps:
+      - name: Install redis-cli
+        run: sudo apt-get update -y && sudo apt-get install -y redis-tools -y
+      
+      - name: test redis
+        run: redis-cli -h localhost -p 6379 ping
+
+      - name: Print variable
+        run: echo "${{ secrets.NAME_SECRECT }}"
+
+      - name: setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
