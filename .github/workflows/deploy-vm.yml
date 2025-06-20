@@ -13,8 +13,8 @@ jobs:
 
       - name: setup SSH
       - uses: webfactory/ssh-agent@v0.9.0
-              with:
-                  ssh-private-key: ${{ secrets.SSH_KEY }}
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: create file
         run: ssh azureuser@20.55.28.37 touch hola.txt
