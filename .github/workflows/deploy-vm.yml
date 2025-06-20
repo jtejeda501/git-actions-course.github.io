@@ -16,6 +16,6 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: create file
-        run: ssh azureuser@20.55.28.37 touch hola.txt
+        run: ssh -o StrictHostKeyChecking=no azureuser@20.55.28.37 touch hola.txt
 
 
