@@ -1,6 +1,10 @@
 name: Deploy
 
-on: push
+on: 
+  push:
+    branches:
+      - master
+      - stage
 
 jobs:
   build:
@@ -15,10 +19,15 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - name: create file
-        run: ssh -o StrictHostKeyChecking=no azureuser@20.55.28.37 touch hola.txt
+      # - name: create file
+      #   run: ssh -o StrictHostKeyChecking=no azureuser@20.55.28.37 touch hola.txt
       
-      - name: Deploy to server
-        run: bash deploy.sh
+      - name: Deploy to stage server
+        if: "${{ github.ref == 'refs/heads/stage' }}"
+        run: bash deploy.sh stage
+      
+      - name: Deploy to prod server
+        if: "${{ github.ref == 'refs/heads/master' }}"
+        run: bash deploy.sh master
 
 
