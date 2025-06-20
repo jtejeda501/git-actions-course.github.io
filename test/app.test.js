@@ -5,6 +5,6 @@ describe('GET /', () => {
   it('should return HTML', async () => {
     const res = await request(app).get('/');
     expect(res.statusCode).toBe(200);
-    expect(res.text).toContain('Saludos desde GitHub Actions Course, don rob!');
+    expect(res.text).toContain('This is a new bootcamp to kickstart your career in tech!');
   });
 });
